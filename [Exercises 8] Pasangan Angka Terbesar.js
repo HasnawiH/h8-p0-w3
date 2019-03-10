@@ -1,26 +1,18 @@
 function pasanganTerbesar(num) {
-  // you can only write your code here!
-  var convert = num.toString();
-  var simpan = [];
-  for (var i=0; i<convert.length; i++){
-    simpan[i] = convert[i] + convert[i+1];
+  var arr = num.toString().split('');
+  var hasil = [];
+  for (var i = 0; i < arr.length - 1; i++) {
+    hasil[i] = Number(arr[i] + arr[i + 1]);
   }
-  //console.log(simpan);
-  //Sorting for array looping
-  var tampung =0;
-    for (var j=0; j<simpan.length; j++){
-      for (var k=0; k<simpan.length-j-1; k++){
-        if (parseInt(simpan[k]) > parseInt(simpan[k+1])){
-        tampung = simpan[k];
-        simpan[k] = simpan [k+1];
-        simpan[k+1] = tampung;
-        }
-      }
-      
+  var terbesar_sementara= hasil[0];
+  for (var j = 1; j < hasil.length; j++){
+    if(hasil[j] > terbesar_sementara){
+      terbesar_sementara = hasil[j];
     }
-  //console.log(simpan);  
-  return simpan[simpan.length-1];  
+  }
+  return terbesar_sementara;
 }
+
 // TEST CASES
 console.log(pasanganTerbesar(641573)); // 73
 console.log(pasanganTerbesar(12783456)); // 83
